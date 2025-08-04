@@ -2,22 +2,35 @@ const express = require("express");
 const router = express.Router();
 
 const login = async (req, res) => {
-  const { name } = req.body;
+  let { name } = req.body;
+  name = name?.trim();
+
+  if (!name) {
+    return res.status(400).json({ error: "Name is required" });
+  }
+
   return res.status(200).json({
     token: "dummy",
-    name: name || "Guest",
+    name,
     message: "Login successful",
   });
 };
 
 const signup = async (req, res) => {
-  const { name } = req.body;
+  let { name } = req.body;
+  name = name?.trim();
+
+  if (!name) {
+    return res.status(400).json({ error: "Name is required" });
+  }
+
   return res.status(200).json({
     token: "dummy",
-    name: name || "Guest",
-    message: "Login successful",
+    name,
+    message: "Signup successful",
   });
 };
+
 
 const dashboard = async (req, res) => {
   return res.status(200).json({

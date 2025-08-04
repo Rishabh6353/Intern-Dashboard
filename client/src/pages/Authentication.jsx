@@ -36,6 +36,7 @@ export default function Authentication() {
       } else {
         result =  await axios.post(`${baseURL}/api/users/signup`, { name });
       }
+      const internName = (result?.data?.name || name || "Guest").trim();
       localStorage.setItem("internName", result.data.name);
       navigate("/dashboard");
     } catch (err) {
