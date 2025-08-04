@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import dotenv from "dotenv";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -14,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { IconButton, CircularProgress } from "@mui/material";
 import axios from "axios";
-dotenv.config()
 
 export default function Authentication() {
   const [name, setName] = useState("");
