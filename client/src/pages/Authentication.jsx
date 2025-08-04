@@ -37,7 +37,8 @@ export default function Authentication() {
         result =  await axios.post(`${baseURL}/api/users/signup`, { name });
       }
       const internName = (result?.data?.name || name || "Guest").trim();
-      localStorage.setItem("internName", result.data.name);
+      localStorage.setItem("internName", internName);
+
       navigate("/dashboard");
     } catch (err) {
       console.error("Auth failed", err);
