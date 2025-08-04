@@ -8,7 +8,7 @@ const MONGO_URL = process.env.MONGO_URL;
 const mongoose = require('mongoose');
 
 app.use(cors({
-  origin: "http://localhost:5173", 
+  origin: ['https://intern-dashboard.onrender.com'], 
   credentials: true
 }));
 app.use(express.json())
