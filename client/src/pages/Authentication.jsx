@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import dotenv from "dotenv";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { IconButton, CircularProgress } from "@mui/material";
 import axios from "axios";
+dotenv.config()
 
 export default function Authentication() {
   const [name, setName] = useState("");
@@ -30,10 +32,11 @@ export default function Authentication() {
     setLoading(true);
     try {
       let result;
+      const baseURL = import.meta.env.VITE_SERVER_URL;
       if (formState === 0) {
-        result = await axios.post("http://localhost:3000/api/users/login", { name });
+        result = await axios.post(`${baseURL}/api/users/login`, { name });
       } else {
-        result = await axios.post("http://localhost:3000/api/users/signup", { name });
+        result =  await axios.post(`${baseURL}/api/users/signup`, { name });
       }
       localStorage.setItem("internName", result.data.name);
       navigate("/dashboard");
